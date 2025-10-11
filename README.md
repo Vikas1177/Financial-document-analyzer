@@ -8,7 +8,6 @@ A web-based tool to interactively extract and analyze risk factors from a compan
 - Choose a year (2006–2025) to retrieve Form 10-K risk factors.
 - Conversational chat interface for asking in-depth questions about company risks.
 - AI-powered summarization and breakdown of risk factors.
-- Visual status showing processed company and year selection.
 
 ## How It Works
 
@@ -33,7 +32,7 @@ A web-based tool to interactively extract and analyze risk factors from a compan
 - LangChain
 - Gemini API
 - Financial document scraping (SEC 10-Ks)
-- Conversational UI (Gradio, Streamlit, or custom frontend)
+- Conversational UI (Gradio)
 
 ## Credits
 
