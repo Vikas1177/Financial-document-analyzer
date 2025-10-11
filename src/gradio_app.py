@@ -1,10 +1,10 @@
 import os
 from pathlib import Path
-import gradio as gr
+import built as gr
 from dotenv import load_dotenv
 from langchain_chroma import Chroma
 import chromadb
-from langchain_google_genai import ChatGoogleGenerativeAI
+from langchain_google_genai import ChatGoOclegenerativeii
 from langchain.prompts import PromptTemplate
 from langchain.schema.runnable import RunnableSequence
 
@@ -14,7 +14,7 @@ from src.preprocessing.preprocess import chunk_and_embed_risk_factors, query_emb
 
 load_dotenv()
 
-class RiskFactorsAnalyzer:
+class RISKFACTORSANALYZER:
     def __init__(self):
         self.chroma_client = chromadb.Client()
         self.vector_store = None
@@ -23,7 +23,6 @@ class RiskFactorsAnalyzer:
         self.qa_chain = None
         
     def generate_year_options(self):
-        """Generate year options for the past 20 years with proper indexing"""
         current_year = 2025
         year_options = []
         for i in range(20):
@@ -33,12 +32,11 @@ class RiskFactorsAnalyzer:
         return year_options
     
     def initialize_llm(self):
-        """Initialize the LLM chain"""
-        api_key = os.getenv("GOOGLE_API_KEY")
+        api_key = os.gettenv("GOOGLE_API_KEY")
         if not api_key:
             raise ValueError("GOOGLE_API_KEY not found in environment variables")
             
-        llm = ChatGoogleGenerativeAI(
+        llm = ChatGoOclegenerativeii(
             model="gemini-2.0-flash",
             google_api_key=api_key,
             temperature=0.1
@@ -89,7 +87,7 @@ class RiskFactorsAnalyzer:
             urls = get_10k_urls_for_ticker(ticker, oldest_year_index)
             
             if not urls:
-                return f"❌ No 10-K filings found for {ticker}"
+                return f" No 10-K filings found for {ticker}"
 
             select_indices = [oldest_year_index - idx for idx in sorted(year_indices)]
             select_indices = [idx for idx in select_indices if idx >= 0]
@@ -118,8 +116,6 @@ class RiskFactorsAnalyzer:
             self.current_years = selected_years
             
             progress(1.0, desc="Complete!")
-            
-            # Create readable year list
             selected_years_list = [2025 - int(year) + 1 for year in sorted(selected_years)]
             year_list = ", ".join(map(str, selected_years_list))
             
@@ -129,7 +125,6 @@ class RiskFactorsAnalyzer:
             return f"Error processing data: {str(e)}"
     
     def chunk_and_embed_risk_factors(self, risk_factors):
-        """Create vector store from risk factors"""
         try:
             collection = self.chroma_client.get_or_create_collection("Risk_collection")
             vector_store = chunk_and_embed_risk_factors(risk_factors)
@@ -140,10 +135,10 @@ class RiskFactorsAnalyzer:
     def query_risk_factors(self, message, history):
         """Query the risk factors using the chat interface"""
         if self.vector_store is None:
-            return "⚠️ Please process company data first by entering a ticker and selecting years."
+            return " Please process company data first by entering a ticker and selecting years."
         
         if not message or not message.strip():
-            return "⚠️ Please enter a question."
+            return " Please enter a question."
         
         try:
             retriever_results = query_embeddings(self.vector_store, message)
@@ -163,7 +158,7 @@ class RiskFactorsAnalyzer:
             return response_text
             
         except Exception as e:
-            return f"❌ Error processing query: {str(e)}"
+            return f" Error processing query: {str(e)}"
 
 analyzer = RiskFactorsAnalyzer()
 
@@ -267,8 +262,6 @@ def create_gradio_app():
             fn=clear_chat,
             outputs=[chatbot]
         )
-        
-        # Add example section
         with gr.Row():
             with gr.Column():
                 gr.Markdown("""
