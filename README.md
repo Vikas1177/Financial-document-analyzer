@@ -14,11 +14,11 @@ A web-based tool to interactively extract and analyze risk factors from a compan
 
 1. **Select Stock Ticker and Year**: Use the interface to pick the company ticker (e.g., AAPL) and year of analysis.
 
-   ![[data/Stock and Year Selection](brave_screenshot.jpg)
+   ![Stock and Year Selection](data/data1.png)
 
 2. **Process Company Data**: The app parses the selected company's risk factors from its 10-K report for the chosen year.
 
-   ![data/Status and Processing](brave_screenshot-1.jpg)
+   ![data/Chat with AI](data/data2.png)
 
 3. **Chat with AI**: Ask any questions about major risk factors. The AI gives summarized and detailed views, such as competition, economic conditions, and reputation impacts.
 
