@@ -1,0 +1,5 @@
+TICKERS_FILE = r'C:\Users\Vikash kumar singh\Desktop\project\Financial_document_analyzer\data\company_tickers.json'
+USER_AGENT = 'Vikash vikashkr79790@email.com'
+DATA_DIR = r'C:\Users\Vikash kumar singh\Desktop\project\Financial_document_analyzer\data'
+SEC_API = 'dfce96623a5b2be7e9258b4ee501e52249b9d701cbe190604a9c2e70509a4c5e'
+url_10k = 'data\10k_urls.txt'
