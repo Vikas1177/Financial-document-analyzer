@@ -1,0 +1,12 @@
+langchain==0.3.27
+langchain-community==0.3.27
+langchain-core==0.3.76
+langchain-text-splitters==0.3.11
+langchain-chroma==0.2.6
+langchain-huggingface[full]==0.3.1
+langchain-google-genai==2.1.12
+chromadb==1.5.9
+gradio==5.40.0
+sec-api==1.0.32
+python-dotenv==1.0.1
+requests==2.32.3
