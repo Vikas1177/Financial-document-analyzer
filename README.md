@@ -179,24 +179,6 @@ All dependencies are listed in `requirements.txt`:
    python -m src.gradio_app
    ```
 
-## Project Structure
-Financial-document-analyzer/
-├── src/
-│   ├── gradio_app.py              # Web interface & main application
-��   ├── downloader/
-│   │   └── sec_client.py          # SEC EDGAR API client
-│   ├── scraping/
-│   │   └── scrape.py              # Risk factor extraction
-│   └── preprocessing/
-│       └── preprocess.py          # Text chunking & embedding
-├── data/
-│   ├── data1.png                  # UI screenshot 1
-│   ├── data2.png                  # UI screenshot 2
-│   └── company_tickers.json       # Ticker to CIK mapping
-├── requirements.txt               # Python dependencies
-├── .env.example                   # Environment variables template
-└── README.md                      
-
 ## Model Parameters
 Embedding Model: all-MiniLM-L6-v2 (384-dimensional vectors)
 LLM Model: gemini-2.0-flash (Fast, accurate responses)
